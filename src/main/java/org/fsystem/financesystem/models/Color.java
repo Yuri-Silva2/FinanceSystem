@@ -1,6 +1,6 @@
-package org.fsystem.financesystem.models.category;
+package org.fsystem.financesystem.models;
 
-public enum CategoryColor {
+public enum Color {
 
     BERRY_RED("#B8255F"), RED("#DB4035"),
     ORANGE("#FF9933"), YELLOW("#FAD000"),
@@ -21,7 +21,7 @@ public enum CategoryColor {
 
     private final String hexCode;
 
-    CategoryColor(String hexCode) {
+    Color(String hexCode) {
         this.hexCode = hexCode;
     }
 
