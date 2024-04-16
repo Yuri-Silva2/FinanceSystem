@@ -1,6 +1,6 @@
-package org.fsystem.financesystem.models.account;
+package org.fsystem.financesystem.model;
 
-public enum Institutions {
+public enum Institution {
     NUBANK,
     ITAU,
     BANCO_DO_BRASIL,

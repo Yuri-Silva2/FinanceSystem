@@ -1,4 +1,4 @@
-package org.fsystem.financesystem.models;
+package org.fsystem.financesystem.model;
 
 public enum Color {
 

@@ -1,31 +1,29 @@
-package org.fsystem.financesystem.models.category;
+package org.fsystem.financesystem.model.category;
 
-import org.fsystem.financesystem.models.Color;
+import org.fsystem.financesystem.model.Color;
+import org.fsystem.financesystem.model.Icon;
 
-public class Category {
+public class CategoryDTO {
 
     private final CategoryType categoryType;
-    private CategoryIcon categoryIcon;
+    private Icon icon;
     private String description;
     private Color color;
 
-    public Category(CategoryType categoryType, Color color, CategoryIcon categoryIcon, String description) {
-        this.color = color;
+    public CategoryDTO(CategoryType categoryType) {
         this.categoryType = categoryType;
-        this.categoryIcon = categoryIcon;
-        this.description = description;
     }
 
     public CategoryType getCategoryType() {
         return categoryType;
     }
 
-    public CategoryIcon getCategoryIcon() {
-        return categoryIcon;
+    public Icon getIcon() {
+        return icon;
     }
 
-    public void setCategoryIcon(CategoryIcon categoryIcon) {
-        this.categoryIcon = categoryIcon;
+    public void setIcon(Icon categoryIcon) {
+        this.icon = categoryIcon;
     }
 
     public String getDescription() {

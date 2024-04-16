@@ -1,27 +1,25 @@
-package org.fsystem.financesystem.models.account;
+package org.fsystem.financesystem.model.account;
 
-import org.fsystem.financesystem.models.Color;
+import org.fsystem.financesystem.model.Color;
+import org.fsystem.financesystem.model.Institution;
 
-public class Account {
+public class AccountDTO {
 
-    private final Institutions institutions;
+    private final Institution institution;
     private final AccountType accountType;
     private boolean quickAddNotification;
     private boolean includeHomeScreen;
     private String description;
+    private double value;
     private Color color;
 
-    public Account(Institutions institutions, String description, AccountType accountType, Color color, boolean includeHomeScreen, boolean quickAddNotification) {
-        this.institutions = institutions;
-        this.description = description;
+    public AccountDTO(Institution institution, AccountType accountType) {
+        this.institution = institution;
         this.accountType = accountType;
-        this.color = color;
-        this.includeHomeScreen = includeHomeScreen;
-        this.quickAddNotification = quickAddNotification;
     }
 
-    public Institutions getInstitutions() {
-        return institutions;
+    public Institution getInstitution() {
+        return institution;
     }
 
     public AccountType getAccountType() {
@@ -50,6 +48,14 @@ public class Account {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public Color getColor() {

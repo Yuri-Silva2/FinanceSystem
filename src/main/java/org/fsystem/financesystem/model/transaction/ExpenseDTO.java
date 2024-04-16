@@ -1,13 +1,13 @@
-package org.fsystem.financesystem.models.transaction;
+package org.fsystem.financesystem.model.transaction;
 
-import org.fsystem.financesystem.models.category.Category;
+import org.fsystem.financesystem.model.category.CategoryDTO;
 
-public class Transfer implements Transaction {
+public class ExpenseDTO implements Transaction {
 
     private double value;
     private String date;
     private String observations;
-    private Category category;
+    private CategoryDTO category;
     private boolean fixedValue;
     private boolean ignoreValue;
 
@@ -42,12 +42,12 @@ public class Transfer implements Transaction {
     }
 
     @Override
-    public void setCategory(Category category) {
+    public void setCategory(CategoryDTO category) {
         this.category = category;
     }
 
     @Override
-    public Category getCategory() {
+    public CategoryDTO getCategory() {
         return category;
     }
 

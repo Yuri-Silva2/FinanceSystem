@@ -1,4 +1,4 @@
-package org.fsystem.financesystem.models.account;
+package org.fsystem.financesystem.model.account;
 
 public enum AccountType {
     CURRENT_ACCOUNT,

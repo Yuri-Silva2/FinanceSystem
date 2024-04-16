@@ -1,6 +1,6 @@
-package org.fsystem.financesystem.models.transaction;
+package org.fsystem.financesystem.model.transaction;
 
-import org.fsystem.financesystem.models.category.Category;
+import org.fsystem.financesystem.model.category.CategoryDTO;
 
 public interface Transaction {
     void setValue(double value);
@@ -9,8 +9,8 @@ public interface Transaction {
     String getDate();
     void setObservations(String observations);
     String getObservations();
-    void setCategory(Category category);
-    Category getCategory();
+    void setCategory(CategoryDTO category);
+    CategoryDTO getCategory();
     void fixedTransaction(boolean fixedValue);
     boolean isFixedTransaction();
     void ignoreTransaction(boolean ignoreValue);
