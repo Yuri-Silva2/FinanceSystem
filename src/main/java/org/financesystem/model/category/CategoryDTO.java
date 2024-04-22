@@ -1,14 +1,14 @@
-package org.fsystem.financesystem.model.category;
+package org.financesystem.model.category;
 
-import org.fsystem.financesystem.model.Color;
-import org.fsystem.financesystem.model.Icon;
+import org.financesystem.model.Icon;
+import org.financesystem.model.Color;
 
 public class CategoryDTO {
 
     private final CategoryType categoryType;
-    private Icon icon;
     private String description;
     private Color color;
+    private Icon icon;
 
     public CategoryDTO(CategoryType categoryType) {
         this.categoryType = categoryType;
@@ -16,14 +16,6 @@ public class CategoryDTO {
 
     public CategoryType getCategoryType() {
         return categoryType;
-    }
-
-    public Icon getIcon() {
-        return icon;
-    }
-
-    public void setIcon(Icon categoryIcon) {
-        this.icon = categoryIcon;
     }
 
     public String getDescription() {
@@ -34,11 +26,19 @@ public class CategoryDTO {
         this.description = description;
     }
 
-    public Color getcolor() {
+    public Color getColor() {
         return color;
     }
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public Icon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Icon icon) {
+        this.icon = icon;
     }
 }

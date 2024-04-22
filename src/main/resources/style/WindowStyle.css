@@ -1,0 +1,14 @@
+#taskbar {
+    -fx-background-color: #3366FF;
+    -fx-opacity: 0.8;
+}
+
+#left-bar, #center-panel, #bottom-bar {
+    -fx-background-color: #D0D6E2;
+}
+
+#left-bar-rectangle {
+    -fx-background-color: #3366FF;
+    -fx-background-radius: 0 40 40 0;
+    -fx-opacity: 0.8;
+}

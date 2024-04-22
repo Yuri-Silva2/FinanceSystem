@@ -1,7 +1,7 @@
-package org.fsystem.financesystem.model.account;
+package org.financesystem.model.account;
 
-import org.fsystem.financesystem.model.Color;
-import org.fsystem.financesystem.model.Institution;
+import org.financesystem.model.Color;
+import org.financesystem.model.Institution;
 
 public class AccountDTO {
 
