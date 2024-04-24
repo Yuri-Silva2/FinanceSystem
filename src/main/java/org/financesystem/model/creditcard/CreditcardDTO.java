@@ -4,21 +4,21 @@ import org.financesystem.model.Institution;
 
 import java.time.LocalDate;
 
-public class CreditCardDTO {
+public class CreditcardDTO {
 
-    private final CreditCardFlag creditCardFlag;
+    private final CreditcardFlag creditCardFlag;
     private final Institution institution;
     private LocalDate closingDay;
     private String description;
     private LocalDate dueDate;
     private double value;
 
-    public CreditCardDTO(CreditCardFlag creditCardFlag, Institution institution) {
+    public CreditcardDTO(CreditcardFlag creditCardFlag, Institution institution) {
         this.creditCardFlag = creditCardFlag;
         this.institution = institution;
     }
 
-    public CreditCardFlag getCreditCardFlag() {
+    public CreditcardFlag getCreditCardFlag() {
         return creditCardFlag;
     }
 
