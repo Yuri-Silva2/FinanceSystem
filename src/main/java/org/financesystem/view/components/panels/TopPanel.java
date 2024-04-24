@@ -1,24 +1,27 @@
-package org.financesystem.view.components;
+package org.financesystem.view.components.panels;
 
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import org.financesystem.model.Icon;
 
-public class Taskbar extends AnchorPane {
+/**
+ * A custom AnchorPane used as the top panel in the application.
+ */
+public class TopPanel extends AnchorPane {
 
     /**
-     * Constructor for the Taskbar class.
+     * Constructor for the TopPanel class.
      */
-    public Taskbar() {
+    public TopPanel() {
         super();
     }
 
     /**
-     * Configures the Taskbar.
+     * Configures the TopPanel.
      */
     public void configure() {
-        setId("taskbar");
+        setId("top-panel");
         setPrefHeight(33.0);
         createUIComponents();
     }
@@ -27,17 +30,17 @@ public class Taskbar extends AnchorPane {
      * Creates the components that will be displayed.
      */
     private void createUIComponents() {
-        ImageView profileView = displayProfileIcon();
-        ImageView menuView = displayMenuIcon();
-        ImageView closeView = displayCloseIcon();
+        ImageView profileIcon = displayProfileIcon();
+        ImageView menuIcon = displayMenuIcon();
+        ImageView closeIcon = displayCloseIcon();
 
-        addComponents(profileView, closeView, menuView);
+        addComponents(profileIcon, menuIcon, closeIcon);
     }
 
     /**
-     * Displays an ImageView for an icon based on the specified Icon Enum.
+     * Displays the profile icon.
      *
-     * @return ImageView for the specified icon
+     * @return The ImageView containing the profile icon
      */
     private ImageView displayProfileIcon() {
         ImageView profileView = Icon.create(Icon.PROFILE, 22.24, 20);
@@ -47,9 +50,9 @@ public class Taskbar extends AnchorPane {
     }
 
     /**
-     * Displays an ImageView for an icon based on the specified Icon Enum.
+     * Displays the menu icon.
      *
-     * @return ImageView for the specified icon
+     * @return The ImageView containing the menu icon
      */
     private ImageView displayMenuIcon() {
         ImageView menuView = Icon.create(Icon.MENU, 29, 20);
@@ -59,9 +62,9 @@ public class Taskbar extends AnchorPane {
     }
 
     /**
-     * Displays an ImageView for an icon based on the specified Icon Enum.
+     * Displays the close icon.
      *
-     * @return ImageView for the specified icon
+     * @return The ImageView containing the close icon
      */
     private ImageView displayCloseIcon() {
         ImageView closeView = Icon.create(Icon.CLOSE, 29, 34);
@@ -71,9 +74,9 @@ public class Taskbar extends AnchorPane {
     }
 
     /**
-     * Adds an array of Nodes to the Taskbar.
+     * Adds an array of Nodes to the TopPanel.
      *
-     * @param nodes Nodes to be added to the Taskbar
+     * @param nodes Nodes to be added to the TopPanel
      */
     private void addComponents(Node... nodes) {
         getChildren().addAll(nodes);

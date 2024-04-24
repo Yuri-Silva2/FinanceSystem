@@ -1,11 +1,14 @@
 package org.financesystem.view;
 
 import javafx.scene.layout.BorderPane;
-import org.financesystem.view.components.BottomBar;
-import org.financesystem.view.components.CenterPanel;
-import org.financesystem.view.components.LeftBar;
-import org.financesystem.view.components.Taskbar;
+import org.financesystem.view.components.panels.BottomPanel;
+import org.financesystem.view.components.panels.CenterPanel;
+import org.financesystem.view.components.panels.LeftPanel;
+import org.financesystem.view.components.panels.TopPanel;
 
+/**
+ * A custom BorderPane representing the main window of the finance application.
+ */
 public class FinanceWindow extends BorderPane {
 
     /**
@@ -16,35 +19,35 @@ public class FinanceWindow extends BorderPane {
     }
 
     /**
-     * Configures the FinanceWindow.
+     * Configures the FinanceWindow by displaying its components.
      */
     public void configure() {
-        BottomBar bottomBar = displayBottomBar();
+        BottomPanel bottomPanel = displayBottomPanel();
         CenterPanel centerPanel = displayCenterPanel();
-        LeftBar leftBar = displayLeftBar();
-        Taskbar taskbar = displayTaskbar();
+        LeftPanel leftPanel = displayLeftPanel();
+        TopPanel topPanel = displayTopPanel();
 
-        setBottom(bottomBar);
+        setBottom(bottomPanel);
         setCenter(centerPanel);
-        setLeft(leftBar);
-        setTop(taskbar);
+        setLeft(leftPanel);
+        setTop(topPanel);
     }
 
     /**
-     * Displays the BottomBar.
+     * Displays the BottomPanel.
      *
-     * @return The BottomBar
+     * @return The BottomPanel instance
      */
-    private BottomBar displayBottomBar() {
-        BottomBar bottomBar = new BottomBar();
-        bottomBar.configure();
-        return bottomBar;
+    private BottomPanel displayBottomPanel() {
+        BottomPanel bottomPanel = new BottomPanel();
+        bottomPanel.configure();
+        return bottomPanel;
     }
 
     /**
      * Displays the CenterPanel.
      *
-     * @return The CenterPanel.
+     * @return The CenterPanel instance
      */
     private CenterPanel displayCenterPanel() {
         CenterPanel centerPanel = new CenterPanel();
@@ -53,24 +56,24 @@ public class FinanceWindow extends BorderPane {
     }
 
     /**
-     * Displays the LeftBar.
+     * Displays the LeftPanel.
      *
-     * @return The LeftBar
+     * @return The LeftPanel instance
      */
-    private LeftBar displayLeftBar() {
-        LeftBar leftBar = new LeftBar();
-        leftBar.configure();
-        return leftBar;
+    private LeftPanel displayLeftPanel() {
+        LeftPanel leftPanel = new LeftPanel();
+        leftPanel.configure();
+        return leftPanel;
     }
 
     /**
-     * Displays the Taskbar.
+     * Displays the TopPanel.
      *
-     * @return The Taskbar
+     * @return The TopPanel instance
      */
-    private Taskbar displayTaskbar() {
-        Taskbar taskbar = new Taskbar();
-        taskbar.configure();
-        return taskbar;
+    private TopPanel displayTopPanel() {
+        TopPanel topPanel = new TopPanel();
+        topPanel.configure();
+        return topPanel;
     }
 }

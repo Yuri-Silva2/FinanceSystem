@@ -1,8 +1,11 @@
-package org.financesystem.view.components;
+package org.financesystem.view.components.panels;
 
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * A custom AnchorPane used as the center panel in the application.
+ */
 public class CenterPanel extends AnchorPane {
 
     /**

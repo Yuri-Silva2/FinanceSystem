@@ -1,14 +1,18 @@
-#taskbar {
+#top-panel {
     -fx-background-color: #3366FF;
-    -fx-opacity: 0.8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0);
 }
 
-#left-bar, #center-panel, #bottom-bar {
+#left-panel, #center-panel, #bottom-panel {
     -fx-background-color: #D0D6E2;
 }
 
-#left-bar-rectangle {
+#left-panel-rectangle {
     -fx-background-color: #3366FF;
     -fx-background-radius: 0 40 40 0;
-    -fx-opacity: 0.8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 12, 0, 0, 0);
+}
+
+#bottom-panel-circle {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 12, 0, 0, 0);
 }

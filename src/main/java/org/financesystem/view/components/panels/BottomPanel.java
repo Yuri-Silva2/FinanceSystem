@@ -1,4 +1,4 @@
-package org.financesystem.view.components;
+package org.financesystem.view.components.panels;
 
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -7,21 +7,24 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import org.financesystem.model.Icon;
 
-public class BottomBar extends AnchorPane {
+/**
+ * A custom AnchorPane used as the bottom panel in the application.
+ */
+public class BottomPanel extends AnchorPane {
 
     /**
-     * Constructor for the BottomBar class.
+     * Constructor for the BottomPanel class.
      */
-    public BottomBar() {
+    public BottomPanel() {
         super();
     }
 
     /**
-     * Configures the BottomBar.
+     * Configures the BottomPanel.
      */
     public void configure() {
-        setId("bottom-bar");
-        setPrefHeight(55.0);
+        setId("bottom-panel");
+        setPrefHeight(60.0);
         createUIComponents();
     }
 
@@ -29,23 +32,36 @@ public class BottomBar extends AnchorPane {
      * Creates the components that will be displayed.
      */
     private void createUIComponents() {
-        Circle circle = displayLeftBarCircle();
+        Circle circle = displayCircle();
+        ImageView addIcon = displayAddIcon();
 
-        addComponents(circle);
+        addComponents(circle, addIcon);
     }
 
+    /**
+     * Displays the add icon.
+     *
+     * @return The ImageView containing the add icon
+     */
     private ImageView displayAddIcon() {
         ImageView addView = Icon.create(Icon.ADD, 32.0, 32.0);
-
+        addView.setLayoutX(709.0);
+        addView.setLayoutY(20.0);
         return addView;
     }
 
-    private Circle displayLeftBarCircle() {
+    /**
+     * Displays the circle.
+     *
+     * @return The Circle
+     */
+    private Circle displayCircle() {
         Circle circle = new Circle();
         circle.setCenterX(720.0);
-        circle.setCenterY(27.0);
+        circle.setCenterY(32.0);
         circle.setRadius(25.0);
-        circle.setFill(Color.rgb(51, 102, 255, 0.8));
+        circle.setId("bottom-panel-circle");
+        circle.setFill(Color.rgb(51, 102, 255));
         return circle;
     }
 
