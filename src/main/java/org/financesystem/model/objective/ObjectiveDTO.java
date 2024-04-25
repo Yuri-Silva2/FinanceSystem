@@ -5,7 +5,7 @@ import org.financesystem.model.Icon;
 
 import java.time.LocalDate;
 
-public class Objective {
+public class ObjectiveDTO {
 
     private ObjectiveSituation objectiveSituation;
     private double initialValue;
@@ -16,7 +16,7 @@ public class Objective {
     private Color color;
     private Icon icon;
 
-    public Objective(String name) {
+    public ObjectiveDTO(String name) {
         this.name = name;
     }
 
