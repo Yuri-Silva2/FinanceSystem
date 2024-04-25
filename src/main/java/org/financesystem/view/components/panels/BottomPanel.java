@@ -45,7 +45,7 @@ public class BottomPanel extends AnchorPane {
      */
     private ImageView displayAddIcon() {
         ImageView addView = Icon.create(Icon.ADD, 32.0, 32.0);
-        addView.setLayoutX(709.0);
+        addView.setLayoutX(708.0);
         addView.setLayoutY(20.0);
         return addView;
     }

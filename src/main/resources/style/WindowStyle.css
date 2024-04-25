@@ -3,7 +3,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 15, 0, 0, 0);
 }
 
-#left-panel, #center-panel, #bottom-panel {
+#left-panel, #bottom-panel, #center-panel {
     -fx-background-color: #D0D6E2;
 }
 
@@ -15,4 +15,10 @@
 
 #bottom-panel-circle {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 12, 0, 0, 0);
+}
+
+#general-card, #account-card, #creditcard-card, #expense-card, #planning-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20 20 20 20;
+    -fx-effect: dropshadow(three-pass-box, rgb(51, 102, 255, 0.8), 20, 0, 0, 0);
 }
