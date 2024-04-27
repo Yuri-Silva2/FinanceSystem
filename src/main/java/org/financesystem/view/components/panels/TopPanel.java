@@ -43,7 +43,7 @@ public class TopPanel extends AnchorPane {
      * @return The ImageView containing the profile icon
      */
     private ImageView displayProfileIcon() {
-        ImageView profileView = Icon.create(Icon.PROFILE, 22.24, 20);
+        ImageView profileView = Icon.create(Icon.PROFILE);
         profileView.setLayoutX(10.0);
         profileView.setLayoutY(4.83);
         return profileView;
@@ -55,7 +55,7 @@ public class TopPanel extends AnchorPane {
      * @return The ImageView containing the menu icon
      */
     private ImageView displayMenuIcon() {
-        ImageView menuView = Icon.create(Icon.MENU, 29, 20);
+        ImageView menuView = Icon.create(Icon.MENU);
         menuView.setLayoutX(50.0);
         menuView.setLayoutY(6.2);
         return menuView;
@@ -67,7 +67,7 @@ public class TopPanel extends AnchorPane {
      * @return The ImageView containing the close icon
      */
     private ImageView displayCloseIcon() {
-        ImageView closeView = Icon.create(Icon.CLOSE, 29, 34);
+        ImageView closeView = Icon.create(Icon.CLOSE);
         closeView.setLayoutX(1410.0);
         closeView.setLayoutY(6.2);
         return closeView;

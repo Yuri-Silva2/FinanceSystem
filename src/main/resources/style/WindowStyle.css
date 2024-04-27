@@ -4,7 +4,7 @@
 }
 
 #left-panel, #bottom-panel, #center-panel {
-    -fx-background-color: #D0D6E2;
+    -fx-background-color: #c3c8d0;
 }
 
 #left-panel-rectangle {
@@ -20,5 +20,5 @@
 #general-card, #account-card, #creditcard-card, #expense-card, #planning-card {
     -fx-background-color: #ffffff;
     -fx-background-radius: 20 20 20 20;
-    -fx-effect: dropshadow(three-pass-box, rgb(51, 102, 255, 0.8), 20, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgb(51, 102, 255, 0.5), 20, 0, 0, 0);
 }

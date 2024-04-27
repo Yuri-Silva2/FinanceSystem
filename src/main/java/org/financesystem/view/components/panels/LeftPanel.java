@@ -58,7 +58,7 @@ public class LeftPanel extends AnchorPane {
      * @return The ImageView containing the arrow icon
      */
     private ImageView displayArrowIcon() {
-        ImageView arrowView = Icon.create(Icon.ARROW, 39.0, 39.0);
+        ImageView arrowView = Icon.create(Icon.ARROW);
         arrowView.setLayoutX(15.0);
         arrowView.setLayoutY(450.0);
         return arrowView;
