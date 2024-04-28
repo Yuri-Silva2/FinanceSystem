@@ -3,15 +3,27 @@ package org.financesystem.model.transaction;
 import org.financesystem.model.category.CategoryDTO;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class ExpenseDTO implements Transaction {
 
+    private UUID userUUID;
     private String observations;
     private CategoryDTO category;
     private boolean ignoreValue;
     private boolean fixedValue;
     private double value;
     private LocalDate date;
+
+    @Override
+    public void setUserUUID(UUID userUUID) {
+
+    }
+
+    @Override
+    public UUID getUserUUID() {
+        return userUUID;
+    }
 
     @Override
     public void setObservations(String observations) {

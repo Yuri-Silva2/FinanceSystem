@@ -3,9 +3,11 @@ package org.financesystem.model.creditcard;
 import org.financesystem.model.Institution;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class CreditcardDTO {
 
+    private final UUID userUUID;
     private final CreditcardFlag creditCardFlag;
     private final Institution institution;
     private LocalDate closingDay;
@@ -13,9 +15,14 @@ public class CreditcardDTO {
     private LocalDate dueDate;
     private double value;
 
-    public CreditcardDTO(CreditcardFlag creditCardFlag, Institution institution) {
+    public CreditcardDTO(UUID userUUID, CreditcardFlag creditCardFlag, Institution institution) {
+        this.userUUID = userUUID;
         this.creditCardFlag = creditCardFlag;
         this.institution = institution;
+    }
+
+    public UUID getUserUUID() {
+        return userUUID;
     }
 
     public CreditcardFlag getCreditCardFlag() {

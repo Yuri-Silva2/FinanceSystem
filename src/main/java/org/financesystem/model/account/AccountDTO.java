@@ -3,8 +3,11 @@ package org.financesystem.model.account;
 import org.financesystem.model.Color;
 import org.financesystem.model.Institution;
 
+import java.util.UUID;
+
 public class AccountDTO {
 
+    private final UUID userUUID;
     private final Institution institution;
     private final AccountType accountType;
     private boolean quickAddNotification;
@@ -13,9 +16,14 @@ public class AccountDTO {
     private double value;
     private Color color;
 
-    public AccountDTO(Institution institution, AccountType accountType) {
+    public AccountDTO(UUID userUUID, Institution institution, AccountType accountType) {
+        this.userUUID = userUUID;
         this.institution = institution;
         this.accountType = accountType;
+    }
+
+    public UUID getUserUUID() {
+        return userUUID;
     }
 
     public Institution getInstitution() {

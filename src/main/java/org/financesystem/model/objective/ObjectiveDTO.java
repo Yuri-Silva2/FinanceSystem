@@ -4,9 +4,11 @@ import org.financesystem.model.Color;
 import org.financesystem.model.Icon;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class ObjectiveDTO {
 
+    private final UUID userUUID;
     private ObjectiveSituation objectiveSituation;
     private double initialValue;
     private String description;
@@ -16,8 +18,13 @@ public class ObjectiveDTO {
     private Color color;
     private Icon icon;
 
-    public ObjectiveDTO(String name) {
+    public ObjectiveDTO(UUID userUUID, String name) {
+        this.userUUID = userUUID;
         this.name = name;
+    }
+
+    public UUID getUserUUID() {
+        return userUUID;
     }
 
     public ObjectiveSituation getObjectiveSituation() {

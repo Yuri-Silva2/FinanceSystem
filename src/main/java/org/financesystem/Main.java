@@ -15,7 +15,12 @@ public class Main extends Application {
     private static final int INITIAL_SCENE_HEIGHT = 990;
 
     public static void main(String[] args) {
+        initComponents();
         launch(args);
+    }
+
+    private static void initComponents() {
+
     }
 
     public void start(Stage stage) throws Exception {
@@ -24,7 +29,7 @@ public class Main extends Application {
             window.configure();
 
             Scene scene = new Scene(window, INITIAL_SCENE_WIDTH, INITIAL_SCENE_HEIGHT);
-            scene.getStylesheets().add(getCSSFile("WindowStyle.css"));
+            scene.getStylesheets().add(getCSSFile());
 
             System.out.println();
 
@@ -40,8 +45,8 @@ public class Main extends Application {
         }
     }
 
-    private String getCSSFile(String name) {
+    private String getCSSFile() {
         return Objects.requireNonNull(Main.class.getClassLoader()
-                .getResource("style/" + name)).toExternalForm();
+                .getResource("style/WindowStyle.css")).toExternalForm();
     }
 }

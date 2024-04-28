@@ -3,8 +3,12 @@ package org.financesystem.model.transaction;
 import org.financesystem.model.category.CategoryDTO;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public interface Transaction {
+    void setUserUUID(UUID userUUID);
+    UUID getUserUUID();
+
     void setObservations(String observations);
     String getObservations();
 
