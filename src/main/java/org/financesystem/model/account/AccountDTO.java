@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class AccountDTO {
 
-    private final UUID userUUID;
+    private final UUID id;
     private final Institution institution;
     private final AccountType accountType;
     private boolean quickAddNotification;
@@ -16,14 +16,14 @@ public class AccountDTO {
     private double value;
     private Color color;
 
-    public AccountDTO(UUID userUUID, Institution institution, AccountType accountType) {
-        this.userUUID = userUUID;
+    public AccountDTO(UUID id, Institution institution, AccountType accountType) {
+        this.id = id;
         this.institution = institution;
         this.accountType = accountType;
     }
 
-    public UUID getUserUUID() {
-        return userUUID;
+    public UUID getID() {
+        return id;
     }
 
     public Institution getInstitution() {

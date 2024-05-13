@@ -93,7 +93,7 @@ public class GeneralCard extends Pane {
         Text text = new Text("$0.00");
         text.setFont(Font.font("Arial",25.0));
         text.setFill(Color.rgb(0,0,0));
-        text.setLayoutX(225.5);
+        text.setLayoutX(233.5);
         text.setLayoutY(105.0);
         return text;
     }

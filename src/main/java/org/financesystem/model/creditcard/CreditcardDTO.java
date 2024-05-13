@@ -7,22 +7,24 @@ import java.util.UUID;
 
 public class CreditcardDTO {
 
-    private final UUID userUUID;
+    private final UUID id;
     private final CreditcardFlag creditCardFlag;
     private final Institution institution;
-    private LocalDate closingDay;
+    private final LocalDate closingDay;
+    private final LocalDate dueDate;
     private String description;
-    private LocalDate dueDate;
     private double value;
 
-    public CreditcardDTO(UUID userUUID, CreditcardFlag creditCardFlag, Institution institution) {
-        this.userUUID = userUUID;
+    public CreditcardDTO(UUID id, CreditcardFlag creditCardFlag, Institution institution, LocalDate closingDay, LocalDate dueDate) {
+        this.id = id;
         this.creditCardFlag = creditCardFlag;
         this.institution = institution;
+        this.closingDay = closingDay;
+        this.dueDate = dueDate;
     }
 
-    public UUID getUserUUID() {
-        return userUUID;
+    public UUID getID() {
+        return id;
     }
 
     public CreditcardFlag getCreditCardFlag() {
@@ -37,24 +39,16 @@ public class CreditcardDTO {
         return closingDay;
     }
 
-    public void setClosingDay(LocalDate closingDay) {
-        this.closingDay = closingDay;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public double getValue() {

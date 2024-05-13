@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public interface Transaction {
-    void setUserUUID(UUID userUUID);
-    UUID getUserUUID();
+    void setID(UUID id);
+    UUID getID();
 
     void setObservations(String observations);
     String getObservations();

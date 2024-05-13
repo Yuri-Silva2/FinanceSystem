@@ -3,15 +3,23 @@ package org.financesystem.model.category;
 import org.financesystem.model.Icon;
 import org.financesystem.model.Color;
 
+import java.util.UUID;
+
 public class CategoryDTO {
 
+    private final UUID id;
     private final CategoryType categoryType;
     private String description;
     private Color color;
     private Icon icon;
 
-    public CategoryDTO(CategoryType categoryType) {
+    public CategoryDTO(UUID id, CategoryType categoryType) {
+        this.id = id;
         this.categoryType = categoryType;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public CategoryType getCategoryType() {

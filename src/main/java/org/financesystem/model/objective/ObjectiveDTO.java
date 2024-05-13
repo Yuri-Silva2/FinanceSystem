@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public class ObjectiveDTO {
 
-    private final UUID userUUID;
-    private ObjectiveSituation objectiveSituation;
+    private final UUID id;
+    private final ObjectiveSituation situation;
     private double initialValue;
     private String description;
     private final String name;
@@ -18,21 +18,18 @@ public class ObjectiveDTO {
     private Color color;
     private Icon icon;
 
-    public ObjectiveDTO(UUID userUUID, String name) {
-        this.userUUID = userUUID;
+    public ObjectiveDTO(UUID id, ObjectiveSituation situation, String name) {
+        this.id = id;
+        this.situation = situation;
         this.name = name;
     }
 
-    public UUID getUserUUID() {
-        return userUUID;
+    public UUID getID() {
+        return id;
     }
 
-    public ObjectiveSituation getObjectiveSituation() {
-        return objectiveSituation;
-    }
-
-    public void setObjectiveSituation(ObjectiveSituation objectiveSituation) {
-        this.objectiveSituation = objectiveSituation;
+    public ObjectiveSituation getSituation() {
+        return situation;
     }
 
     public double getInitialValue() {

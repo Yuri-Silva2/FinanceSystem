@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class RevenueDTO implements Transaction {
 
-    private UUID userUUID;
+    private UUID id;
     private String observations;
     private CategoryDTO category;
     private boolean ignoreValue;
@@ -16,13 +16,13 @@ public class RevenueDTO implements Transaction {
     private LocalDate date;
 
     @Override
-    public void setUserUUID(UUID userUUID) {
+    public void setID(UUID id) {
 
     }
 
     @Override
-    public UUID getUserUUID() {
-        return userUUID;
+    public UUID getID() {
+        return id;
     }
 
     @Override
