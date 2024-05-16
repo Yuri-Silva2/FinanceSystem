@@ -38,7 +38,7 @@ public class Main extends Application {
             FinanceForm financeForm = new FinanceForm();
             financeForm.configure();
 
-            Scene scene = new Scene(financeForm, 473.0, 601.0);
+            Scene scene = new Scene(financeForm, 450.0, 500.0);
             scene.getStylesheets().add(getCSSFile("FormStyle"));
 
             Main.stage.setTitle("Finance System");

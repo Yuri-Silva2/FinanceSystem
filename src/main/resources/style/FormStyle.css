@@ -33,3 +33,9 @@
     -fx-font-weight: bold;
     -fx-effect: dropshadow(three-pass-box, rgb(51, 102, 255, 1), 10, 0, 0, 0);
 }
+
+#email-field, #password-field {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 50 50 50 50;
+    -fx-prompt-text-fill: derive(#aaaaaa, -30%);
+}
