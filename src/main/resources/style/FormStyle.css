@@ -2,36 +2,37 @@
     -fx-background-color: #D0D6E2;
 }
 
-#options-button {
+#signIn-button {
     -fx-background-color: #ffffff;
-    -fx-background-radius: 20 20 20 20;
+    -fx-background-radius: 20 0 0 20;
     -fx-font-size: 15;
     -fx-font-weight: bold;
 }
 
-#options-background {
-    -fx-background-radius: 20 20 20 20;
-    -fx-border-color: #3366FF;
-    -fx-border-radius: 20 20 20 20;
-    -fx-border-width: 2;
-    -fx-effect: dropshadow(three-pass-box, rgb(51, 102, 255, 1), 30, 0, 0, 0);
+#signUp-button {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0 20 20 0;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
 }
 
-#options-blur {
+#signIn-button:focused {
+    -fx-background-color: linear-gradient(to right, #3366FF, #678ff6);
+    -fx-effect: dropshadow(three-pass-box, rgb(103, 143, 246, 1), 30, 0, 0, 0);
+}
+
+#signUp-button:focused {
+    -fx-background-color: linear-gradient(to left, #3366FF, #678ff6);
+    -fx-effect: dropshadow(three-pass-box, rgb(103, 143, 246, 1), 30, 0, 0, 0);
+}
+
+#confirm-button {
     -fx-background-radius: 20 20 20 20;
     -fx-background-color: linear-gradient(to right, #3366FF, #678ff6);
     -fx-border-radius: 20 20 20 20;
     -fx-font-size: 13;
     -fx-font-weight: bold;
-}
-
-#confirm-button {
-    -fx-background-radius: 20 20 20 20;
-    -fx-background-color: #3366FF;
-    -fx-border-radius: 20 20 20 20;
-    -fx-font-size: 13;
-    -fx-font-weight: bold;
-    -fx-effect: dropshadow(three-pass-box, rgb(51, 102, 255, 1), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgb(103, 143, 246, 1), 30, 0, 0, 0);
 }
 
 #email-field, #password-field {

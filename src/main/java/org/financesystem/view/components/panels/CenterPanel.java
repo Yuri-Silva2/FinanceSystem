@@ -19,12 +19,13 @@ public class CenterPanel extends AnchorPane {
      */
     public CenterPanel() {
         super();
+        configure();
     }
 
     /**
      * Configures the CenterPanel.
      */
-    public void configure() {
+    private void configure() {
         setId("center-panel");
         createUIComponents();
     }
@@ -33,11 +34,11 @@ public class CenterPanel extends AnchorPane {
      * Creates the components that will be displayed.
      */
     private void createUIComponents() {
-        AccountCard accountCard = displayAccountCard();
-        CreditcardCard creditcardCard = displayCreditcardCard();
-        ExpenseCard expenseCard = displayExpenseCard();
-        GeneralCard generalCard = displayGeneralCard();
-        PlanningCard planningCard = displayPlanningCard();
+        AccountCard accountCard = new AccountCard();
+        CreditcardCard creditcardCard = new CreditcardCard();
+        ExpenseCard expenseCard = new ExpenseCard();
+        GeneralCard generalCard = new GeneralCard();
+        PlanningCard planningCard = new PlanningCard();
 
         Text accountText = displayTitle("Contas", 65.25, 315.0);
         Text creditcardText = displayTitle("Cartões de crédito", 768.75, 315.0);
@@ -64,61 +65,6 @@ public class CenterPanel extends AnchorPane {
         fTitle.setLayoutX(x);
         fTitle.setLayoutY(y);
         return fTitle;
-    }
-
-    /**
-     * Displays the AccountCard.
-     *
-     * @return The AccountCard instance
-     */
-    private AccountCard displayAccountCard() {
-        AccountCard accountCard = new AccountCard();
-        accountCard.configure();
-        return accountCard;
-    }
-
-    /**
-     * Displays the CreditcardCard.
-     *
-     * @return The CreditcardCard instance
-     */
-    private CreditcardCard displayCreditcardCard() {
-        CreditcardCard creditcardCard = new CreditcardCard();
-        creditcardCard.configure();
-        return creditcardCard;
-    }
-
-    /**
-     * Displays the ExpenseCard.
-     *
-     * @return The ExpenseCard instance
-     */
-    private ExpenseCard displayExpenseCard() {
-        ExpenseCard expenseCard = new ExpenseCard();
-        expenseCard.configure();
-        return expenseCard;
-    }
-
-    /**
-     * Displays the GeneralCard.
-     *
-     * @return The GeneralCard instance
-     */
-    private GeneralCard displayGeneralCard() {
-        GeneralCard generalCard = new GeneralCard();
-        generalCard.configure();
-        return generalCard;
-    }
-
-    /**
-     * Displays the PlanningCard.
-     *
-     * @return The PlanningCard instance
-     */
-    private PlanningCard displayPlanningCard() {
-        PlanningCard planningCard = new PlanningCard();
-        planningCard.configure();
-        return planningCard;
     }
 
     /**

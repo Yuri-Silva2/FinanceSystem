@@ -13,12 +13,13 @@ public class AccountCard extends Pane {
      */
     public AccountCard() {
         super();
+        configure();
     }
 
     /**
      * Configures the AccountCard.
      */
-    public void configure() {
+    private void configure() {
         setId("account-card");
         setPrefHeight(239.0);
         setPrefWidth(533.0);

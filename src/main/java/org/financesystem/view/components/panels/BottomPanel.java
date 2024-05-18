@@ -17,12 +17,13 @@ public class BottomPanel extends AnchorPane {
      */
     public BottomPanel() {
         super();
+        configure();
     }
 
     /**
      * Configures the BottomPanel.
      */
-    public void configure() {
+    private void configure() {
         setId("bottom-panel");
         setPrefHeight(60.0);
         createUIComponents();

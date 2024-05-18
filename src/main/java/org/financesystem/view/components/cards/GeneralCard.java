@@ -19,12 +19,13 @@ public class GeneralCard extends Pane {
      */
     public GeneralCard() {
         super();
+        configure();
     }
 
     /**
      * Configures the GeneralCard.
      */
-    public void configure() {
+    private void configure() {
         setId("general-card");
         setPrefHeight(239.0);
         setPrefWidth(533.0);

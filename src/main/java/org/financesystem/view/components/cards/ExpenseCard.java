@@ -13,12 +13,13 @@ public class ExpenseCard extends Pane {
      */
     public ExpenseCard() {
         super();
+        configure();
     }
 
     /**
      * Configures the ExpenseCard.
      */
-    public void configure() {
+    private void configure() {
         setId("expense-card");
         setPrefHeight(239.0);
         setPrefWidth(533.0);

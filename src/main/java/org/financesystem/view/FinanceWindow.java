@@ -16,64 +16,21 @@ public class FinanceWindow extends BorderPane {
      */
     public FinanceWindow() {
         super();
+        configure();
     }
 
     /**
      * Configures the FinanceWindow by displaying its components.
      */
-    public void configure() {
-        BottomPanel bottomPanel = displayBottomPanel();
-        CenterPanel centerPanel = displayCenterPanel();
-        LeftPanel leftPanel = displayLeftPanel();
-        TopPanel topPanel = displayTopPanel();
+    private void configure() {
+        BottomPanel bottomPanel = new BottomPanel();
+        CenterPanel centerPanel = new CenterPanel();
+        LeftPanel leftPanel = new LeftPanel();
+        TopPanel topPanel = new TopPanel();
 
         setBottom(bottomPanel);
         setCenter(centerPanel);
         setLeft(leftPanel);
         setTop(topPanel);
-    }
-
-    /**
-     * Displays the BottomPanel.
-     *
-     * @return The BottomPanel instance
-     */
-    private BottomPanel displayBottomPanel() {
-        BottomPanel bottomPanel = new BottomPanel();
-        bottomPanel.configure();
-        return bottomPanel;
-    }
-
-    /**
-     * Displays the CenterPanel.
-     *
-     * @return The CenterPanel instance
-     */
-    private CenterPanel displayCenterPanel() {
-        CenterPanel centerPanel = new CenterPanel();
-        centerPanel.configure();
-        return centerPanel;
-    }
-
-    /**
-     * Displays the LeftPanel.
-     *
-     * @return The LeftPanel instance
-     */
-    private LeftPanel displayLeftPanel() {
-        LeftPanel leftPanel = new LeftPanel();
-        leftPanel.configure();
-        return leftPanel;
-    }
-
-    /**
-     * Displays the TopPanel.
-     *
-     * @return The TopPanel instance
-     */
-    private TopPanel displayTopPanel() {
-        TopPanel topPanel = new TopPanel();
-        topPanel.configure();
-        return topPanel;
     }
 }

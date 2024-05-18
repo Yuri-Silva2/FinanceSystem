@@ -13,12 +13,13 @@ public class PlanningCard extends Pane {
      */
     public PlanningCard() {
         super();
+        configure();
     }
 
     /**
      * Configures the PlanningCard.
      */
-    public void configure() {
+    private void configure() {
         setId("planning-card");
         setPrefHeight(239.0);
         setPrefWidth(533.0);

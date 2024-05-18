@@ -13,12 +13,13 @@ public class CreditcardCard extends Pane {
      */
     public CreditcardCard() {
         super();
+        configure();
     }
 
     /**
      * Configures the CreditcardCard.
      */
-    public void configure() {
+    private void configure() {
         setId("creditcard-card");
         setPrefHeight(239.0);
         setPrefWidth(533.0);

@@ -36,7 +36,6 @@ public class Main extends Application {
             initFinanceWindow();
 
             FinanceForm financeForm = new FinanceForm();
-            financeForm.configure();
 
             Scene scene = new Scene(financeForm, 450.0, 500.0);
             scene.getStylesheets().add(getCSSFile("FormStyle"));
@@ -54,10 +53,9 @@ public class Main extends Application {
     }
 
     private static void createFinanceWindow() {
-        FinanceWindow window = new FinanceWindow();
-        window.configure();
+        FinanceWindow financeWindow = new FinanceWindow();
 
-        Scene scene = new Scene(window, INITIAL_SCENE_WIDTH, INITIAL_SCENE_HEIGHT);
+        Scene scene = new Scene(financeWindow, INITIAL_SCENE_WIDTH, INITIAL_SCENE_HEIGHT);
         scene.getStylesheets().add(getCSSFile("WindowStyle"));
 
         stage.setScene(scene);

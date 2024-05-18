@@ -4,7 +4,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.textfield.CustomTextField;
@@ -20,12 +19,13 @@ public class FinanceForm extends AnchorPane {
      */
     public FinanceForm() {
         super();
+        configure();
     }
 
     /**
      * Configures the FinanceForm by displaying its components.
      */
-    public void configure() {
+    private void configure() {
         setId("finance-form");
         createUIComponents();
     }
@@ -35,51 +35,43 @@ public class FinanceForm extends AnchorPane {
      */
     private void createUIComponents() {
         Button confirmButton = displayConfirmButton();
-
-        Label optionsButton = displayOptionsButton();
-        Label optionsBackground = displayOptionsBackground();
-        Label optionsButtonBlur = displayOptionsButtonBlur();
+        Button signInButton = displaySignInButton();
+        Button signUpButton = displaySignUpButton();
 
         CustomTextField emailField = displayEmailField();
         CustomTextField passwordField = displayPasswordField();
 
         CheckBox termsButton = displayTermsButton();
 
-        addComponents(confirmButton, optionsButton,
-                optionsBackground, optionsButtonBlur,
-                emailField, passwordField, termsButton);
+        addComponents(confirmButton, signUpButton,
+                signInButton, emailField, passwordField, termsButton);
     }
 
-    private Label displayOptionsBackground() {
-        Label label = new Label("");
-        label.setId("options-background");
-        label.setLayoutX(105.0);
-        label.setLayoutY(46.0);
-        label.setPrefHeight(45.0);
-        label.setPrefWidth(240.0);
-        return label;
+    private Button displaySignInButton() {
+        Button button = new Button("Sign in");
+        button.setId("signIn-button");
+        button.setLayoutX(102.5);
+        button.setLayoutY(46.0);
+        button.setPrefHeight(45.0);
+        button.setPrefWidth(120.0);
+        return button;
     }
 
-    private Label displayOptionsButton() {
-        Label label = new Label("    Sign in                     Sign up");
-        label.setId("options-button");
-        label.setLayoutX(105.0);
-        label.setLayoutY(46.0);
-        label.setPrefHeight(45.0);
-        label.setPrefWidth(240.0);
-        return label;
+    private Button displaySignUpButton() {
+        Button button = new Button("Sign up");
+        button.setId("signUp-button");
+        button.setLayoutX(222.0);
+        button.setLayoutY(46.0);
+        button.setPrefHeight(45.0);
+        button.setPrefWidth(120.0);
+        return button;
     }
 
-    private Label displayOptionsButtonBlur() {
-        Label label = new Label("           Sign in");
-        label.setId("options-blur");
-        label.setLayoutX(105.0);
-        label.setLayoutY(46.0);
-        label.setPrefHeight(45.0);
-        label.setPrefWidth(122.5);
-        return label;
-    }
-
+    /**
+     * Creates and returns a CustomTextField for the email input.
+     *
+     * @return CustomTextField for the email input
+     */
     private CustomTextField displayEmailField() {
         CustomTextField textField = new CustomTextField();
         textField.setId("email-field");
@@ -92,6 +84,11 @@ public class FinanceForm extends AnchorPane {
         return textField;
     }
 
+    /**
+     * Creates and returns a CustomTextField for the password input.
+     *
+     * @return CustomTextField for the password input
+     */
     private CustomTextField displayPasswordField() {
         CustomTextField textField = new CustomTextField();
         textField.setId("password-field");
@@ -104,6 +101,11 @@ public class FinanceForm extends AnchorPane {
         return textField;
     }
 
+    /**
+     * Creates and returns a CheckBox for the "Remember Password" option.
+     *
+     * @return CheckBox for the "Remember Password" option
+     */
     private CheckBox displayTermsButton() {
         CheckBox checkBox = new CheckBox();
         checkBox.setId("terms-button");
@@ -115,17 +117,23 @@ public class FinanceForm extends AnchorPane {
         return checkBox;
     }
 
-    private ImageView defineIcon(Icon ic) {
-        ImageView icon = Icon.create(ic);
-        icon.setFitHeight(23.0);
-        icon.setFitWidth(23.0);
-        return icon;
+    /**
+     * Creates and returns an ImageView for the specified icon.
+     *
+     * @param icon The icon to be displayed
+     * @return ImageView representing the specified icon
+     */
+    private ImageView defineIcon(Icon icon) {
+        ImageView image = Icon.create(icon);
+        image.setFitHeight(23.0);
+        image.setFitWidth(23.0);
+        return image;
     }
 
     /**
-     * Displays the button for the finance form.
+     * Creates and returns the button for confirming the form submission.
      *
-     * @return Button node
+     * @return Button for form submission
      */
     private Button displayConfirmButton() {
         Button button = new Button();

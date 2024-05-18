@@ -16,12 +16,13 @@ public class LeftPanel extends AnchorPane {
      */
     public LeftPanel() {
         super();
+        configure();
     }
 
     /**
      * Configures the LeftPanel.
      */
-    public void configure() {
+    private void configure() {
         setId("left-panel");
         setPrefWidth(51.0);
         createUIComponents();

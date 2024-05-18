@@ -15,12 +15,13 @@ public class TopPanel extends AnchorPane {
      */
     public TopPanel() {
         super();
+        configure();
     }
 
     /**
      * Configures the TopPanel.
      */
-    public void configure() {
+    private void configure() {
         setId("top-panel");
         setPrefHeight(33.0);
         createUIComponents();
