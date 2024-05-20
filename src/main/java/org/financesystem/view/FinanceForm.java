@@ -3,10 +3,11 @@ package org.financesystem.view;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.textfield.CustomPasswordField;
 import org.controlsfx.control.textfield.CustomTextField;
+import org.financesystem.controller.FormEventController;
 import org.financesystem.model.Icon;
 
 /**
@@ -34,34 +35,54 @@ public class FinanceForm extends AnchorPane {
      * Creates the components that will be displayed.
      */
     private void createUIComponents() {
-        Button confirmButton = displayConfirmButton();
+        Button confirmSignInButton = displayConfirmSignInButton();
+        Button confirmSignUpButton = displayConfirmSignUpButton();
+
         Button signInButton = displaySignInButton();
         Button signUpButton = displaySignUpButton();
 
         CustomTextField emailField = displayEmailField();
-        CustomTextField passwordField = displayPasswordField();
+        CustomPasswordField confirmPasswordField = displayConfirmPasswordField();
+        CustomPasswordField passwordField = displayPasswordField();
 
-        CheckBox termsButton = displayTermsButton();
+        CheckBox checkBox = displayCheckBox();
 
-        addComponents(confirmButton, signUpButton,
-                signInButton, emailField, passwordField, termsButton);
+        ImageView closeIcon = displayCloseIcon();
+
+        addComponents(confirmSignInButton, confirmSignUpButton, signUpButton, signInButton,
+                emailField, confirmPasswordField, passwordField,
+                checkBox, closeIcon);
+
+        new FormEventController(signInButton, signUpButton, confirmSignInButton,
+                confirmSignUpButton, emailField, confirmPasswordField, passwordField,
+                checkBox, closeIcon);
     }
 
+    /**
+     * Creates and returns the button for signing in.
+     *
+     * @return Button for signing in
+     */
     private Button displaySignInButton() {
         Button button = new Button("Sign in");
         button.setId("signIn-button");
         button.setLayoutX(102.5);
-        button.setLayoutY(46.0);
+        button.setLayoutY(56.0);
         button.setPrefHeight(45.0);
         button.setPrefWidth(120.0);
         return button;
     }
 
+    /**
+     * Creates and returns the button for signing up.
+     *
+     * @return Button for signing up
+     */
     private Button displaySignUpButton() {
         Button button = new Button("Sign up");
         button.setId("signUp-button");
         button.setLayoutX(222.0);
-        button.setLayoutY(46.0);
+        button.setLayoutY(56.0);
         button.setPrefHeight(45.0);
         button.setPrefWidth(120.0);
         return button;
@@ -78,10 +99,27 @@ public class FinanceForm extends AnchorPane {
         textField.setPromptText("Email");
         textField.setLeft(defineIcon(Icon.MAIL_FORM));
         textField.setLayoutX(57.0);
-        textField.setLayoutY(173.0);
+        textField.setLayoutY(183.0);
         textField.setPrefHeight(30.0);
         textField.setPrefWidth(335.0);
         return textField;
+    }
+
+    /**
+     * Creates and returns a CustomPasswordField for the confirmation password input.
+     *
+     * @return CustomPasswordField for the confirmation password input
+     */
+    private CustomPasswordField displayConfirmPasswordField() {
+        CustomPasswordField customPasswordField = new CustomPasswordField();
+        customPasswordField.setId("confirmpassword-field");
+        customPasswordField.setPromptText("Confirm Password");
+        customPasswordField.setLeft(defineIcon(Icon.LOCK));
+        customPasswordField.setLayoutX(57.0);
+        customPasswordField.setLayoutY(240.0);
+        customPasswordField.setPrefHeight(30.0);
+        customPasswordField.setPrefWidth(335.0);
+        return customPasswordField;
     }
 
     /**
@@ -89,16 +127,16 @@ public class FinanceForm extends AnchorPane {
      *
      * @return CustomTextField for the password input
      */
-    private CustomTextField displayPasswordField() {
-        CustomTextField textField = new CustomTextField();
-        textField.setId("password-field");
-        textField.setPromptText("Password");
-        textField.setLeft(defineIcon(Icon.LOCK));
-        textField.setLayoutX(57.0);
-        textField.setLayoutY(278.0);
-        textField.setPrefHeight(30.0);
-        textField.setPrefWidth(335.0);
-        return textField;
+    private CustomPasswordField displayPasswordField() {
+        CustomPasswordField passwordField = new CustomPasswordField();
+        passwordField.setId("password-field");
+        passwordField.setPromptText("Password");
+        passwordField.setLeft(defineIcon(Icon.LOCK));
+        passwordField.setLayoutX(57.0);
+        passwordField.setLayoutY(298.0);
+        passwordField.setPrefHeight(30.0);
+        passwordField.setPrefWidth(335.0);
+        return passwordField;
     }
 
     /**
@@ -106,12 +144,12 @@ public class FinanceForm extends AnchorPane {
      *
      * @return CheckBox for the "Remember Password" option
      */
-    private CheckBox displayTermsButton() {
+    private CheckBox displayCheckBox() {
         CheckBox checkBox = new CheckBox();
         checkBox.setId("terms-button");
         checkBox.setText("Remember Password");
         checkBox.setLayoutX(57.0);
-        checkBox.setLayoutY(320.0);
+        checkBox.setLayoutY(340.0);
         checkBox.setPrefHeight(20.0);
         checkBox.setPrefWidth(150.0);
         return checkBox;
@@ -135,15 +173,42 @@ public class FinanceForm extends AnchorPane {
      *
      * @return Button for form submission
      */
-    private Button displayConfirmButton() {
+    private Button displayConfirmSignInButton() {
+        return getButton("Sign In", "confirm-signIn-button");
+    }
+
+    /**
+     * Creates and returns the button for confirming the form submission.
+     *
+     * @return Button for form submission
+     */
+    private Button displayConfirmSignUpButton() {
+        return getButton("Sign Up", "confirm-signUp-button");
+    }
+
+    private Button getButton(String text, String id) {
         Button button = new Button();
-        button.setText("Sign in");
-        button.setId("confirm-button");
+        button.setText(text);
+        button.setId(id);
         button.setLayoutX(60.0);
-        button.setLayoutY(412.0);
+        button.setLayoutY(422.0);
         button.setPrefHeight(50.0);
         button.setPrefWidth(330.0);
         return button;
+    }
+
+    /**
+     * Displays the close icon.
+     *
+     * @return The ImageView containing the close icon
+     */
+    private ImageView displayCloseIcon() {
+        ImageView closeView = Icon.create(Icon.CLOSE_FORM);
+        closeView.setLayoutX(430.0);
+        closeView.setLayoutY(2.0);
+        closeView.setFitHeight(18.0);
+        closeView.setFitWidth(18.0);
+        return closeView;
     }
 
     /**
