@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 /**
  * Repository class for accessing 'People' data from the database.
@@ -26,19 +27,22 @@ public class PeopleRepository {
     /**
      * Creates a new record in the 'peoples' table.
      *
+     * @param uuid the uuid of the person.
      * @param email the email of the person.
      * @param password the password of the person.
      */
-    public void createPeople(String email, String password) {
-        String query = "INSERT INTO peoples (name, email, birthday, password) VALUES (?, ?, ?, ?)";
+    public void createPeople(UUID uuid, String email, String password) {
+        String query = "INSERT INTO peoples (id_bin, name, email, birthday, password) VALUES " +
+                "(unhex(replace(?,'-','')), ?, ?, ?, ?)";
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setString(1, null);
-            statement.setString(2, email);
-            statement.setString(3, null);
-            statement.setString(4, password);
+            statement.setString(1, uuid.toString());
+            statement.setString(2, null);
+            statement.setString(3, email);
+            statement.setString(4, null);
+            statement.setString(5, password);
 
             statement.executeUpdate();
 
@@ -64,6 +68,25 @@ public class PeopleRepository {
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return resultSet.getString("password");
+                }
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return null;
+    }
+
+    public String getIdByEmail(String email) {
+        String query = "SELECT id_text FROM peoples WHERE email = ?";
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, email);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("id_text");
                 }
             }
         } catch (SQLException e) {

@@ -10,6 +10,8 @@ import org.controlsfx.control.textfield.CustomPasswordField;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.financesystem.model.People;
 
+import java.util.UUID;
+
 /**
  * Controller for handling events in the FinanceForm.
  */
@@ -94,7 +96,8 @@ public class FormEventController {
             return;
         }
 
-        FormController.successfulLogin();
+        String uuid = MysqlController.getIdByEmail(email);
+        FormController.successfulLogin(uuid);
     }
 
     private void handleConfirmSignUpButtonClick(ActionEvent event) {
@@ -131,9 +134,9 @@ public class FormEventController {
             return;
         }
 
-        MysqlController.createPeople(new People("", email, null, password));
-
-        FormController.successfulLogin();
+        UUID uuid = UUID.randomUUID();
+        MysqlController.createPeople(new People(uuid,"", email, null, password));
+        FormController.successfulSignUp(uuid);
     }
 
     private void handleCloseIconClick(MouseEvent event) {

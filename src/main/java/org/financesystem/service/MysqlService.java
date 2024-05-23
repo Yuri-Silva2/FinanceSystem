@@ -3,6 +3,8 @@ package org.financesystem.service;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+import java.sql.SQLException;
+
 /**
  * Service class for managing MySQL database connections using HikariCP.
  */
@@ -22,7 +24,7 @@ public class MysqlService {
      * Configures the HikariCP data source with connection properties.
      */
     private void configureDataSource() {
-        String connectionUrl = "jdbc:mysql://localhost:3306/financesystem?useUnicode=true&characterEncoding=utf8";
+        String connectionUrl = "jdbc:mysql://localhost:3306/financesystem";
         String username = "root";
         String password = "12345";
 
@@ -33,7 +35,7 @@ public class MysqlService {
         hikariConfig.addDataSourceProperty("prepStmtCacheSize", "250");
         hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 
-        dataSource = new HikariDataSource();
+        dataSource = new HikariDataSource(hikariConfig);
     }
 
     /**

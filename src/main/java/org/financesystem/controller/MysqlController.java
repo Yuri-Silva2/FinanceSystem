@@ -14,10 +14,14 @@ public class MysqlController {
     }
 
     protected static void createPeople(People people) {
-        peopleRepository.createPeople(people.email(), people.password());
+        peopleRepository.createPeople(people.uuid(), people.email(), people.password());
     }
 
     protected static String containsPeople(String email) {
         return peopleRepository.containsPeople(email);
+    }
+
+    protected static String getIdByEmail(String email) {
+        return peopleRepository.getIdByEmail(email);
     }
 }
