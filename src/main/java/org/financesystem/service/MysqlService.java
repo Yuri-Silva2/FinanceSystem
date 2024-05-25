@@ -3,8 +3,6 @@ package org.financesystem.service;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import java.sql.SQLException;
-
 /**
  * Service class for managing MySQL database connections using HikariCP.
  */

@@ -7,7 +7,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.textfield.CustomPasswordField;
 import org.controlsfx.control.textfield.CustomTextField;
+import org.financesystem.controller.FormController;
 import org.financesystem.controller.FormEventController;
+import org.financesystem.controller.MysqlController;
 import org.financesystem.model.Icon;
 
 /**
@@ -15,11 +17,16 @@ import org.financesystem.model.Icon;
  */
 public class FinanceForm extends AnchorPane {
 
+    private final FormController formController;
+    private final MysqlController mysqlController;
+
     /**
      * Constructor for the FinanceForm class.
      */
-    public FinanceForm() {
+    public FinanceForm(FormController formController, MysqlController mysqlController) {
         super();
+        this.formController = formController;
+        this.mysqlController = mysqlController;
         configure();
     }
 
@@ -53,7 +60,7 @@ public class FinanceForm extends AnchorPane {
                 emailField, confirmPasswordField, passwordField,
                 checkBox, closeIcon);
 
-        new FormEventController(signInButton, signUpButton, confirmSignInButton,
+        new FormEventController(mysqlController, formController, signInButton, signUpButton, confirmSignInButton,
                 confirmSignUpButton, emailField, confirmPasswordField, passwordField,
                 checkBox, closeIcon);
     }

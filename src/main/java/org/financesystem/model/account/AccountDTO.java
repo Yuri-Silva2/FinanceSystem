@@ -6,4 +6,5 @@ import org.financesystem.model.Institution;
 import java.util.UUID;
 
 public record AccountDTO(UUID uuid, Institution institution, AccountType accountType, boolean quickAddNotification,
-                         boolean includeHomeScreen, String description, double value, Color color) { }
+                         boolean includeHomeScreen, String description, double value, Color color) {
+}

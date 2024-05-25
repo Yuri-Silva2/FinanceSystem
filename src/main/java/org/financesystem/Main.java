@@ -6,10 +6,14 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.controlsfx.control.textfield.CustomPasswordField;
+import org.financesystem.controller.FormController;
 import org.financesystem.controller.MysqlController;
+import org.financesystem.service.AlertService;
+import org.financesystem.session.SessionManager;
+import org.financesystem.view.FinanceDashboard;
 import org.financesystem.view.FinanceForm;
-import org.financesystem.view.FinanceWindow;
 
+import java.io.File;
 import java.util.Objects;
 
 /**
@@ -19,57 +23,64 @@ public class Main extends Application {
 
     private static double x, y;
 
-    private static final int INITIAL_SCENE_WIDTH = 1440;
-    private static final int INITIAL_SCENE_HEIGHT = 990;
-
     private static Stage stage;
 
+    /**
+     * Launches the JavaFX application.
+     *
+     * @param args The command line arguments.
+     */
     public static void main(String[] args) {
-        MysqlController.initialize();
         launch(args);
     }
 
     /**
-     * Initializes the Finance Window.
+     * Starts the JavaFX application.
+     *
+     * @param primaryStage The primary stage of the application.
      */
-    public static void initFinanceWindow() {
-        Main.stage.close();
-        createFinanceWindow();
-        showFinanceWindow();
+    @Override
+    public void start(Stage primaryStage) {
+        Main.stage = primaryStage;
+        initializeApplication();
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        try {
-            Main.stage = stage;
+    /**
+     * Initializes the application.
+     */
+    private void initializeApplication() {
+        File sessionFile = new File(System.getProperty("user.home") + "\\Documents\\FinanceSystem\\session.properties");
+        SessionManager sessionManager = new SessionManager(sessionFile);
+        AlertService alertService = new AlertService();
+        MysqlController mysqlController = new MysqlController();
+        mysqlController.initialize();
+        FormController formController = new FormController(sessionManager, alertService);
 
-            FinanceForm financeForm = new FinanceForm();
+        FinanceForm financeForm = new FinanceForm(formController, mysqlController);
 
-            Scene scene = new Scene(financeForm, 450.0, 510.0);
-            scene.getStylesheets().add(getCSSFile("FormStyle"));
+        Scene scene = new Scene(financeForm, 450.0, 510.0);
+        scene.getStylesheets().add(getCSSFile("FormStyle"));
 
-            Main.stage.setTitle("Finance System");
-            Main.stage.setScene(scene);
-            Main.stage.centerOnScreen();
-            Main.stage.setResizable(false);
-            Main.stage.initStyle(StageStyle.UNDECORATED);
-            Main.stage.show();
+        Main.stage.setTitle("Finance System");
+        Main.stage.setScene(scene);
+        Main.stage.centerOnScreen();
+        Main.stage.setResizable(false);
+        Main.stage.initStyle(StageStyle.UNDECORATED);
+        Main.stage.show();
 
-            financeForm.setOnMousePressed(event -> {
-                x = event.getSceneX();
-                y = event.getSceneY();
-            });
+        financeForm.setOnMousePressed(event -> {
+            x = event.getSceneX();
+            y = event.getSceneY();
+        });
 
-            financeForm.setOnMouseDragged(event -> {
-                stage.setX(event.getScreenX() - x);
-                stage.setY(event.getScreenY() - y);
-            });
+        financeForm.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        });
 
-            selectSignInPage();
+        selectSignInPage();
 
-        } catch (Exception e) {
-            throw new Exception(e);
-        }
+        formController.autoLogin();
     }
 
     /**
@@ -94,37 +105,39 @@ public class Main extends Application {
     }
 
     /**
-     * Creates the Finance Window.
+     * Shows the Finance Dashboard.
      */
-    private static void createFinanceWindow() {
-        FinanceWindow financeWindow = new FinanceWindow();
+    public static void showFinanceDashboard() {
+        stage.close();
+        createFinanceDashboard();
+        stage.show();
+    }
+
+    /**
+     * Creates the Finance Dashboard.
+     */
+    private static void createFinanceDashboard() {
+        FinanceDashboard financeDashboard = new FinanceDashboard();
 
         Main.stage = new Stage();
 
-        Scene scene = new Scene(financeWindow, INITIAL_SCENE_WIDTH, INITIAL_SCENE_HEIGHT);
-        scene.getStylesheets().add(getCSSFile("WindowStyle"));
+        Scene scene = new Scene(financeDashboard, 1440.0, 990.0);
+        scene.getStylesheets().add(getCSSFile("DashboardStyle"));
 
         Main.stage.setScene(scene);
         Main.stage.centerOnScreen();
         Main.stage.initStyle(StageStyle.UNDECORATED);
         Main.stage.setResizable(false);
 
-        financeWindow.setOnMousePressed(event -> {
+        financeDashboard.setOnMousePressed(event -> {
             x = event.getSceneX();
             y = event.getSceneY();
         });
 
-        financeWindow.setOnMouseDragged(event -> {
+        financeDashboard.setOnMouseDragged(event -> {
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         });
-    }
-
-    /**
-     * Shows the Finance Window.
-     */
-    private static void showFinanceWindow() {
-        stage.show();
     }
 
     /**

@@ -1,4 +1,4 @@
 package org.financesystem.controller;
 
-public class WindowController {
+public class DashboardController {
 }

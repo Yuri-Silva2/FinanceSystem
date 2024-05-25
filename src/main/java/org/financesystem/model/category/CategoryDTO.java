@@ -1,7 +1,7 @@
 package org.financesystem.model.category;
 
-import org.financesystem.model.Icon;
 import org.financesystem.model.Color;
+import org.financesystem.model.Icon;
 
 import java.util.UUID;
 

@@ -1,145 +1,56 @@
 package org.financesystem.controller;
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.textfield.CustomPasswordField;
 import org.controlsfx.control.textfield.CustomTextField;
-import org.financesystem.model.People;
-
-import java.util.UUID;
+import org.financesystem.events.form.CloseIconHandler;
+import org.financesystem.events.form.SignInHandler;
+import org.financesystem.events.form.SignUpHandler;
 
 /**
  * Controller for handling events in the FinanceForm.
  */
 public class FormEventController {
 
-    private final Button signInButton;
-    private final Button signUpButton;
+    private final SignInHandler signInHandler;
+    private final SignUpHandler signUpHandler;
+    private final CloseIconHandler closeIconHandler;
 
-    private final Button confirmSignInButton;
-    private final Button confirmSignUpButton;
-
-    private final CustomTextField emailField;
-    private final CustomPasswordField confirmPasswordField;
-    private final CustomPasswordField passwordField;
-
-    private final CheckBox checkBox;
-
-    private final ImageView closeIcon;
-
-    public FormEventController(Button signInButton, Button signUpButton, Button confirmSignInButton, Button confirmSignUpButton, CustomTextField emailField,
+    /**
+     * Initializes the FormEventController.
+     *
+     * @param formController       The FormController associated with this event controller.
+     * @param signInButton         Button for signing in.
+     * @param signUpButton         Button for signing up.
+     * @param confirmSignInButton  Button for confirming sign in.
+     * @param confirmSignUpButton  Button for confirming sign up.
+     * @param emailField           Text field for email input.
+     * @param confirmPasswordField Text field for confirming password input.
+     * @param passwordField        Text field for password input.
+     * @param checkBox             CheckBox for terms agreement.
+     * @param closeIcon            Icon for closing the form.
+     */
+    public FormEventController(MysqlController mysqlController, FormController formController, Button signInButton, Button signUpButton, Button confirmSignInButton, Button confirmSignUpButton, CustomTextField emailField,
                                CustomPasswordField confirmPasswordField, CustomPasswordField passwordField, CheckBox checkBox, ImageView closeIcon) {
-        this.signInButton = signInButton;
-        this.signUpButton = signUpButton;
-        this.confirmSignInButton = confirmSignInButton;
-        this.confirmSignUpButton = confirmSignUpButton;
-        this.emailField = emailField;
-        this.confirmPasswordField = confirmPasswordField;
-        this.passwordField = passwordField;
-        this.checkBox = checkBox;
-        this.closeIcon = closeIcon;
+        this.signInHandler = new SignInHandler(mysqlController, signInButton, signUpButton, confirmSignInButton, confirmSignUpButton,
+                emailField, confirmPasswordField, passwordField, checkBox, formController);
+        this.signUpHandler = new SignUpHandler(mysqlController, signInButton, signUpButton, confirmSignInButton, confirmSignUpButton,
+                emailField, confirmPasswordField, passwordField, checkBox, formController);
+        this.closeIconHandler = new CloseIconHandler(closeIcon);
         initialize();
     }
 
-    public void initialize() {
-        signInButton.setOnAction(this::handleSignInButtonClick);
-        signUpButton.setOnAction(this::handleSignUpButtonClick);
-        confirmSignInButton.setOnAction(this::handleConfirmSignInButtonClick);
-        confirmSignUpButton.setOnAction(this::handleConfirmSignUpButtonClick);
-        closeIcon.setOnMouseClicked(this::handleCloseIconClick);
-    }
-
-    private void handleSignInButtonClick(ActionEvent event) {
-        signInButton.setStyle("-fx-background-color: linear-gradient(to right, #3366FF, #678ff6);");
-        signUpButton.setStyle("-fx-background-color: #ffffff;");
-
-        checkBox.setText("Remember Password");
-
-        confirmPasswordField.setVisible(false);
-        confirmSignInButton.setVisible(true);
-        confirmSignUpButton.setVisible(false);
-    }
-
-    private void handleSignUpButtonClick(ActionEvent event) {
-        signUpButton.setStyle("-fx-background-color: linear-gradient(to left, #3366FF, #678ff6);");
-        signInButton.setStyle("-fx-background-color: #ffffff;");
-
-        checkBox.setText("Terms");
-
-        confirmPasswordField.setVisible(true);
-        confirmSignInButton.setVisible(false);
-        confirmSignUpButton.setVisible(true);
-    }
-
-    private void handleConfirmSignInButtonClick(ActionEvent event) {
-        String email = emailField.getText();
-        String password = passwordField.getText();
-
-        if (email.isEmpty() || email.isBlank() || password.isEmpty() || password.isBlank()) {
-            FormController.sendFormErrorMessage("Please enter a valid email address and password");
-            return;
-        }
-
-        String databasePassword = MysqlController.containsPeople(email);
-
-        if (databasePassword == null || !email.contains("@")) {
-            FormController.sendFormErrorMessage("Please enter a valid email address");
-            return;
-        }
-
-        if (!password.equalsIgnoreCase(databasePassword)) {
-            FormController.sendFormErrorMessage("Password does not match");
-            return;
-        }
-
-        String uuid = MysqlController.getIdByEmail(email);
-        FormController.successfulLogin(uuid);
-    }
-
-    private void handleConfirmSignUpButtonClick(ActionEvent event) {
-        String email = emailField.getText();
-        String confirmPassword = confirmPasswordField.getText();
-        String password = passwordField.getText();
-
-        if (email.isEmpty() || email.isBlank() || confirmPassword.isEmpty() ||
-                confirmPassword.isBlank() || password.isEmpty() || password.isBlank()) {
-            FormController.sendFormErrorMessage("Please enter a valid email address and password");
-            return;
-        }
-
-        if (!email.contains("@")) {
-            FormController.sendFormErrorMessage("Please enter a valid email address");
-            return;
-        }
-
-        String databasePassword = MysqlController.containsPeople(email);
-
-        if (databasePassword != null) {
-            FormController.sendFormErrorMessage("User already exists");
-            return;
-        }
-
-        if (!password.equalsIgnoreCase(confirmPassword)) {
-            System.out.println(password + " " + confirmPassword);
-            FormController.sendFormErrorMessage("Password does not match");
-            return;
-        }
-
-        if (!checkBox.isSelected()) {
-            FormController.sendFormErrorMessage("Please accept the terms");
-            return;
-        }
-
-        UUID uuid = UUID.randomUUID();
-        MysqlController.createPeople(new People(uuid,"", email, null, password));
-        FormController.successfulSignUp(uuid);
-    }
-
-    private void handleCloseIconClick(MouseEvent event) {
-        Platform.exit();
+    /**
+     * Initializes the handlers by registering the necessary event handlers
+     * for the sign-in, sign-up, and close icon functionalities.
+     * This method should be called during the setup phase to ensure
+     * that all handlers are properly registered and ready to use.
+     */
+    private void initialize() {
+        signInHandler.register();
+        signUpHandler.register();
+        closeIconHandler.register();
     }
 }

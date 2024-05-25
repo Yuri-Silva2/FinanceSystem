@@ -9,12 +9,12 @@ import org.financesystem.view.components.panels.TopPanel;
 /**
  * A custom BorderPane representing the main window of the finance application.
  */
-public class FinanceWindow extends BorderPane {
+public class FinanceDashboard extends BorderPane {
 
     /**
      * Constructor for the FinanceWindow class.
      */
-    public FinanceWindow() {
+    public FinanceDashboard() {
         super();
         configure();
     }

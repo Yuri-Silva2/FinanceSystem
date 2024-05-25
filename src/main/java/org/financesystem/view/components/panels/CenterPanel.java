@@ -2,7 +2,6 @@ package org.financesystem.view.components.panels;
 
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -54,8 +53,8 @@ public class CenterPanel extends AnchorPane {
      * Displays a title text with the specified properties.
      *
      * @param title The title text
-     * @param x The x-coordinate of the text
-     * @param y The y-coordinate of the text
+     * @param x     The x-coordinate of the text
+     * @param y     The y-coordinate of the text
      * @return The created Text node
      */
     private Text displayTitle(String title, double x, double y) {

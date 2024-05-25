@@ -64,8 +64,8 @@ public class GeneralCard extends Pane {
      */
     private Text displayMonth() {
         Text text = new Text("April");
-        text.setFont(Font.font("Arial",25.0));
-        text.setFill(Color.rgb(0,0,0));
+        text.setFont(Font.font("Arial", 25.0));
+        text.setFill(Color.rgb(0, 0, 0));
         text.setLayoutX(240.5);
         text.setLayoutY(35.0);
         return text;
@@ -78,8 +78,8 @@ public class GeneralCard extends Pane {
      */
     private Text displayBalanceTitle() {
         Text text = new Text("Account Balance");
-        text.setFont(Font.font("Arial",18.0));
-        text.setFill(Color.rgb(75,68,68));
+        text.setFont(Font.font("Arial", 18.0));
+        text.setFill(Color.rgb(75, 68, 68));
         text.setLayoutX(200.5);
         text.setLayoutY(75.0);
         return text;
@@ -92,8 +92,8 @@ public class GeneralCard extends Pane {
      */
     private Text displayCurrentBalance() {
         Text text = new Text("$0.00");
-        text.setFont(Font.font("Arial",25.0));
-        text.setFill(Color.rgb(0,0,0));
+        text.setFont(Font.font("Arial", 25.0));
+        text.setFill(Color.rgb(0, 0, 0));
         text.setLayoutX(233.5);
         text.setLayoutY(105.0);
         return text;
@@ -148,8 +148,8 @@ public class GeneralCard extends Pane {
      */
     private Text displayRevenueTitle() {
         Text text = new Text("Revenues");
-        text.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD,16.0));
-        text.setFill(Color.rgb(75,68,68));
+        text.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 16.0));
+        text.setFill(Color.rgb(75, 68, 68));
         text.setLayoutX(90.0);
         text.setLayoutY(180.0);
         return text;
@@ -162,8 +162,8 @@ public class GeneralCard extends Pane {
      */
     private Text displayRevenueCurrentBalance() {
         Text text = new Text("$0.00");
-        text.setFont(Font.font("Arial",16.0));
-        text.setFill(Color.rgb(28,150,48));
+        text.setFont(Font.font("Arial", 16.0));
+        text.setFill(Color.rgb(28, 150, 48));
         text.setLayoutX(90.0);
         text.setLayoutY(200.0);
         return text;
@@ -190,8 +190,8 @@ public class GeneralCard extends Pane {
      */
     private Text displayExpenseTitle() {
         Text text = new Text("Expenses");
-        text.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD,16.0));
-        text.setFill(Color.rgb(75,68,68));
+        text.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 16.0));
+        text.setFill(Color.rgb(75, 68, 68));
         text.setLayoutX(410.0);
         text.setLayoutY(180.0);
         return text;
@@ -204,8 +204,8 @@ public class GeneralCard extends Pane {
      */
     private Text displayExpenseCurrentBalance() {
         Text text = new Text("$0.00");
-        text.setFont(Font.font("Arial",16.0));
-        text.setFill(Color.rgb(255,0,0));
+        text.setFont(Font.font("Arial", 16.0));
+        text.setFill(Color.rgb(255, 0, 0));
         text.setLayoutX(410.0);
         text.setLayoutY(200.0);
         return text;
