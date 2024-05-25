@@ -5,6 +5,7 @@ import org.financesystem.service.AlertService;
 import org.financesystem.session.SessionManager;
 
 import java.io.File;
+import java.util.UUID;
 
 /**
  * The FormController class handles the logic for user login, signup, and session management in the Finance System application.
@@ -54,6 +55,10 @@ public class FormController {
      */
     public void successfulSignUp() {
         Main.showFinanceDashboard();
+    }
+
+    public UUID getIDLoggedSession() {
+        return UUID.fromString(sessionManager.getAttribute("session"));
     }
 
     /**

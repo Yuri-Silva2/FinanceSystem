@@ -25,6 +25,9 @@ public class Main extends Application {
 
     private static Stage stage;
 
+    private static MysqlController mysqlController;
+    private static FormController formController;
+
     /**
      * Launches the JavaFX application.
      *
@@ -52,9 +55,9 @@ public class Main extends Application {
         File sessionFile = new File(System.getProperty("user.home") + "\\Documents\\FinanceSystem\\session.properties");
         SessionManager sessionManager = new SessionManager(sessionFile);
         AlertService alertService = new AlertService();
-        MysqlController mysqlController = new MysqlController();
+        mysqlController = new MysqlController();
         mysqlController.initialize();
-        FormController formController = new FormController(sessionManager, alertService);
+        formController = new FormController(sessionManager, alertService);
 
         FinanceForm financeForm = new FinanceForm(formController, mysqlController);
 
@@ -117,7 +120,7 @@ public class Main extends Application {
      * Creates the Finance Dashboard.
      */
     private static void createFinanceDashboard() {
-        FinanceDashboard financeDashboard = new FinanceDashboard();
+        FinanceDashboard financeDashboard = new FinanceDashboard(mysqlController, formController);
 
         Main.stage = new Stage();
 

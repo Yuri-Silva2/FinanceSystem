@@ -1,6 +1,8 @@
 package org.financesystem.view;
 
 import javafx.scene.layout.BorderPane;
+import org.financesystem.controller.FormController;
+import org.financesystem.controller.MysqlController;
 import org.financesystem.view.components.panels.BottomPanel;
 import org.financesystem.view.components.panels.CenterPanel;
 import org.financesystem.view.components.panels.LeftPanel;
@@ -11,11 +13,16 @@ import org.financesystem.view.components.panels.TopPanel;
  */
 public class FinanceDashboard extends BorderPane {
 
+    private final MysqlController mysqlController;
+    private final FormController formController;
+
     /**
      * Constructor for the FinanceWindow class.
      */
-    public FinanceDashboard() {
+    public FinanceDashboard(MysqlController mysqlController, FormController formController) {
         super();
+        this.mysqlController = mysqlController;
+        this.formController = formController;
         configure();
     }
 
@@ -24,7 +31,7 @@ public class FinanceDashboard extends BorderPane {
      */
     private void configure() {
         BottomPanel bottomPanel = new BottomPanel();
-        CenterPanel centerPanel = new CenterPanel();
+        CenterPanel centerPanel = new CenterPanel(mysqlController, formController);
         LeftPanel leftPanel = new LeftPanel();
         TopPanel topPanel = new TopPanel();
 

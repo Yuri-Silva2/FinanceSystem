@@ -7,13 +7,14 @@ import org.controlsfx.control.textfield.CustomPasswordField;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.financesystem.controller.FormController;
 import org.financesystem.controller.MysqlController;
+import org.financesystem.events.Event;
 
 /**
  * The SignInHandler class handles the sign-in related events for the form.
  * It manages the sign-in button click actions, validates user input, and interacts
  * with the MysqlController to authenticate users.
  */
-public class SignInHandler {
+public class SignInHandler implements Event {
 
     private final FormController formController;
     private final MysqlController mysqlController;
@@ -60,6 +61,7 @@ public class SignInHandler {
      * Registers the event handlers for the sign-in and confirm sign-in buttons.
      * This method should be called to enable the sign-in functionality.
      */
+    @Override
     public void register() {
         signInButton.setOnAction(this::handleSignInButtonClick);
         confirmSignInButton.setOnAction(this::handleConfirmSignInButtonClick);

@@ -1,9 +1,12 @@
 package org.financesystem.controller;
 
 import org.financesystem.model.People;
+import org.financesystem.repository.AccountRepository;
 import org.financesystem.repository.PeopleRepository;
 import org.financesystem.service.MysqlService;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.UUID;
 
 /**
  * The MysqlController class is responsible for managing the interactions
@@ -12,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class MysqlController {
 
+    private AccountRepository accountRepository;
     private PeopleRepository peopleRepository;
 
     /**
@@ -21,6 +25,7 @@ public class MysqlController {
      */
     public void initialize() {
         MysqlService mysqlService = new MysqlService();
+        accountRepository = new AccountRepository(mysqlService.getDataSource());
         peopleRepository = new PeopleRepository(mysqlService.getDataSource());
     }
 
@@ -51,5 +56,15 @@ public class MysqlController {
      */
     public String getIdByEmail(String email) {
         return peopleRepository.getIdByEmail(email);
+    }
+
+    /**
+     * Gets the current balance by uuid.
+     *
+     * @param uuid the uuid to check.
+     * @return the value found of this account.
+     */
+    public double getCurrentBalanceByUUID(UUID uuid) {
+        return accountRepository.getCurrentBalanceByUUID(uuid);
     }
 }

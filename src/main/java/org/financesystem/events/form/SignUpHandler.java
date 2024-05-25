@@ -7,6 +7,7 @@ import org.controlsfx.control.textfield.CustomPasswordField;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.financesystem.controller.FormController;
 import org.financesystem.controller.MysqlController;
+import org.financesystem.events.Event;
 import org.financesystem.model.People;
 
 import java.util.UUID;
@@ -16,7 +17,7 @@ import java.util.UUID;
  * It manages the sign-up button click actions, validates user input, and interacts
  * with the MysqlController to create new user accounts.
  */
-public class SignUpHandler {
+public class SignUpHandler implements Event {
 
     private final FormController formController;
     private final MysqlController mysqlController;
@@ -63,6 +64,7 @@ public class SignUpHandler {
      * Registers the event handlers for the sign-up and confirm sign-up buttons.
      * This method should be called to enable the sign-up functionality.
      */
+    @Override
     public void register() {
         signUpButton.setOnAction(this::handleSignUpButtonClick);
         confirmSignUpButton.setOnAction(this::handleConfirmSignUpButtonClick);

@@ -3,12 +3,13 @@ package org.financesystem.events.form;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import org.financesystem.events.Event;
 
 /**
  * The CloseIconHandler class is responsible for handling the close icon click event.
  * When the close icon is clicked, the application will exit.
  */
-public class CloseIconHandler {
+public class CloseIconHandler implements Event {
 
     private final ImageView closeIcon;
 
@@ -25,6 +26,7 @@ public class CloseIconHandler {
      * Registers the click event handler for the close icon.
      * This method should be called to enable the close functionality.
      */
+    @Override
     public void register() {
         closeIcon.setOnMouseClicked(this::handleCloseIconClick);
     }

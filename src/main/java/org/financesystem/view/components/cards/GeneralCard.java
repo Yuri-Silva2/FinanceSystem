@@ -77,7 +77,7 @@ public class GeneralCard extends Pane {
      * @return Text node containing the balance title
      */
     private Text displayBalanceTitle() {
-        Text text = new Text("Account Balance");
+        Text text = new Text("Current Balance");
         text.setFont(Font.font("Arial", 18.0));
         text.setFill(Color.rgb(75, 68, 68));
         text.setLayoutX(200.5);
@@ -94,6 +94,7 @@ public class GeneralCard extends Pane {
         Text text = new Text("$0.00");
         text.setFont(Font.font("Arial", 25.0));
         text.setFill(Color.rgb(0, 0, 0));
+        text.setId("current-balance");
         text.setLayoutX(233.5);
         text.setLayoutY(105.0);
         return text;

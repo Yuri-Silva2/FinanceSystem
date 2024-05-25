@@ -1,20 +1,13 @@
 package org.financesystem.repository;
 
 import com.zaxxer.hikari.HikariDataSource;
-import org.jetbrains.annotations.Nullable;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.UUID;
 
 /**
  * Repository class for accessing 'People' data from the database.
  */
-public class PeopleRepository {
-
-    private final HikariDataSource dataSource;
+public class PeopleRepository extends Repository {
 
     /**
      * Constructs a PeopleRepository with the specified data source.
@@ -22,7 +15,7 @@ public class PeopleRepository {
      * @param dataSource The data source to be used for database connections.
      */
     public PeopleRepository(HikariDataSource dataSource) {
-        this.dataSource = dataSource;
+        super(dataSource);
     }
 
     /**
@@ -58,52 +51,5 @@ public class PeopleRepository {
     public String getIdByEmail(String email) {
         String query = "SELECT id_text FROM peoples WHERE email = ?";
         return executeQuery(query, email, "id_text");
-    }
-
-    /**
-     * Executes an SQL query that expects a single result.
-     *
-     * @param query      the SQL query.
-     * @param email      the email parameter for the query.
-     * @param columnName the name of the column to fetch from the result set.
-     * @return the value of the specified column from the result set, or null if no result.
-     */
-    private @Nullable String executeQuery(String query, String email, String columnName) {
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
-
-            statement.setString(1, email);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return resultSet.getString(columnName);
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to execute query row in database.", e);
-        }
-        return null;
-    }
-
-    /**
-     * Executes an SQL update query.
-     *
-     * @param query  the SQL query.
-     * @param params the parameters for the query.
-     */
-    private void executeUpdate(String query, Object... params) {
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
-
-            int index = 1;
-            for (Object param : params) {
-                statement.setObject(index++, param);
-            }
-
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to execute update row in database.", e);
-        }
     }
 }

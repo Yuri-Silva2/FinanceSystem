@@ -6,6 +6,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import org.financesystem.controller.DashboardEventController;
+import org.financesystem.controller.FormController;
+import org.financesystem.controller.MysqlController;
 import org.financesystem.view.components.cards.*;
 
 /**
@@ -13,11 +16,16 @@ import org.financesystem.view.components.cards.*;
  */
 public class CenterPanel extends AnchorPane {
 
+    private final MysqlController mysqlController;
+    private final FormController formController;
+
     /**
      * Constructor for the CenterPanel class.
      */
-    public CenterPanel() {
+    public CenterPanel(MysqlController mysqlController, FormController formController) {
         super();
+        this.mysqlController = mysqlController;
+        this.formController = formController;
         configure();
     }
 
@@ -47,6 +55,8 @@ public class CenterPanel extends AnchorPane {
         addComponents(accountCard, creditcardCard, expenseCard,
                 generalCard, planningCard, accountText,
                 creditcardText, expenseText, planningText);
+
+        new DashboardEventController(mysqlController, formController, generalCard.getChildren());
     }
 
     /**
