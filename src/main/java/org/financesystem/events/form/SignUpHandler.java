@@ -8,7 +8,11 @@ import org.controlsfx.control.textfield.CustomTextField;
 import org.financesystem.controller.FormController;
 import org.financesystem.controller.MysqlController;
 import org.financesystem.events.Event;
+import org.financesystem.model.Color;
+import org.financesystem.model.Institution;
 import org.financesystem.model.People;
+import org.financesystem.model.account.AccountDTO;
+import org.financesystem.model.account.AccountType;
 
 import java.util.UUID;
 
@@ -128,7 +132,12 @@ public class SignUpHandler implements Event {
             return;
         }
 
-        mysqlController.createPeople(new People(UUID.randomUUID(), "", email, null, password));
+        UUID uuid = UUID.randomUUID();
+        AccountDTO defaultAccount = new AccountDTO(uuid, Institution.UNKNOWN, AccountType.WALLET,
+                false, true, "", 0.0, Color.DARK_CYAN);
+
+        mysqlController.createPeople(new People(uuid, "", email, null, password));
+        mysqlController.createAccount(defaultAccount);
         formController.successfulSignUp();
     }
 }

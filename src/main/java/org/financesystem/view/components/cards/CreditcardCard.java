@@ -22,7 +22,7 @@ public class CreditcardCard extends Pane {
     private void configure() {
         setId("creditcard-card");
         setPrefHeight(239.0);
-        setPrefWidth(533.0);
+        setPrefWidth(503.0);
         setLayoutX(753.75);
         setLayoutY(330.0);
         createUIComponents();

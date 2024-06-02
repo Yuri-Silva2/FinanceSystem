@@ -1,11 +1,12 @@
 package org.financesystem.controller;
 
 import org.financesystem.model.People;
+import org.financesystem.model.account.AccountDTO;
 import org.financesystem.repository.AccountRepository;
 import org.financesystem.repository.PeopleRepository;
 import org.financesystem.service.MysqlService;
-import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -34,7 +35,7 @@ public class MysqlController {
      *
      * @param people the People object containing the data to be stored.
      */
-    public void createPeople(@NotNull People people) {
+    public void createPeople(People people) {
         peopleRepository.createPeople(people.uuid(), people.email(), people.password());
     }
 
@@ -59,12 +60,32 @@ public class MysqlController {
     }
 
     /**
+     * Creates a new Account entry in the repository.
+     *
+     * @param accountDTO the Account object containing the data to be stored.
+     */
+    public void createAccount(AccountDTO accountDTO) {
+        accountRepository.createAccount(accountDTO.uuid(), accountDTO.institution(), accountDTO.accountType(), accountDTO.quickAddNotification(),
+                accountDTO.includeHomeScreen(), accountDTO.description(), accountDTO.color());
+    }
+
+    /**
      * Gets the current balance by uuid.
      *
      * @param uuid the uuid to check.
      * @return the value found of this account.
      */
-    public double getCurrentBalanceByUUID(UUID uuid) {
-        return accountRepository.getCurrentBalanceByUUID(uuid);
+    public double getWalletBalanceByUUID(UUID uuid) {
+        return accountRepository.getWalletBalanceByUUID(uuid);
+    }
+
+    /**
+     * Gets all accounts for a given user.
+     *
+     * @param uuid The uuid from user.
+     * @return     The AccountDTO from user.
+     */
+    public List<AccountDTO> getAllAccounts(UUID uuid) {
+        return accountRepository.getAllAccounts(uuid);
     }
 }

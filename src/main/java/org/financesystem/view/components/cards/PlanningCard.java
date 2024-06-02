@@ -22,7 +22,7 @@ public class PlanningCard extends Pane {
     private void configure() {
         setId("planning-card");
         setPrefHeight(239.0);
-        setPrefWidth(533.0);
+        setPrefWidth(503.0);
         setLayoutX(753.75);
         setLayoutY(640.0);
         createUIComponents();

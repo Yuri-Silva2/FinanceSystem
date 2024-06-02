@@ -22,8 +22,8 @@ public class ExpenseCard extends Pane {
     private void configure() {
         setId("expense-card");
         setPrefHeight(239.0);
-        setPrefWidth(533.0);
-        setLayoutX(50.25);
+        setPrefWidth(503.0);
+        setLayoutX(80.25);
         setLayoutY(640.0);
         createUIComponents();
     }

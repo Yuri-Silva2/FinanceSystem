@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import org.financesystem.controller.DashboardEventController;
+import org.financesystem.controller.CardsEventController;
 import org.financesystem.controller.FormController;
 import org.financesystem.controller.MysqlController;
 import org.financesystem.view.components.cards.*;
@@ -47,16 +47,17 @@ public class CenterPanel extends AnchorPane {
         GeneralCard generalCard = new GeneralCard();
         PlanningCard planningCard = new PlanningCard();
 
-        Text accountText = displayTitle("Contas", 65.25, 315.0);
-        Text creditcardText = displayTitle("Cartões de crédito", 768.75, 315.0);
-        Text expenseText = displayTitle("Despesas por categoria", 65.25, 625.0);
-        Text planningText = displayTitle("Planejamento mensal", 768.75, 625.0);
+        Text accountText = displayTitle("Contas", 95.25, 315.0);
+        Text creditcardText = displayTitle("Cartões de crédito", 798.75, 315.0);
+        Text expenseText = displayTitle("Despesas por categoria", 95.25, 625.0);
+        Text planningText = displayTitle("Planejamento mensal", 798.75, 625.0);
 
         addComponents(accountCard, creditcardCard, expenseCard,
                 generalCard, planningCard, accountText,
                 creditcardText, expenseText, planningText);
 
-        new DashboardEventController(mysqlController, formController, generalCard.getChildren());
+        new CardsEventController(mysqlController, formController, generalCard.getChildren(),
+                accountCard.getChildren());
     }
 
     /**

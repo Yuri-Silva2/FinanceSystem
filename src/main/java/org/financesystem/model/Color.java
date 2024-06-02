@@ -28,4 +28,13 @@ public enum Color {
     public String getHexCode() {
         return hexCode;
     }
+
+    public static Color fromHexCode(String hexCode) {
+        for (Color color : Color.values()) {
+            if (color.getHexCode().equalsIgnoreCase(hexCode)) {
+                return color;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant with hex code " + hexCode);
+    }
 }
